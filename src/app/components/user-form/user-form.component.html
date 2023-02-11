@@ -1,0 +1,46 @@
+<div class="container bg-light mt-5 p-5">
+  <h1 class="text-center">User Form</h1>
+  <form [formGroup]="userForm" (ngSubmit)="Login($event)">
+    <div class="mb-3">
+      <label for="useName" class="form-label">User Name</label>
+      <input type="text"
+      class="form-control "
+      id="userName"
+      formControlName="userName">
+      <ng-container *ngIf="getUsername.touched">
+        <div
+        class="form-text"
+        *ngIf="getUsername.hasError('required')">
+          User Name is required
+        </div>
+        <div
+        class="form-text"
+        *ngIf="getUsername.hasError('minlength')">
+          User Name Length Must be 3 at Least
+        </div>
+      </ng-container>
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input type="password"
+      class="form-control "
+      id="password"
+      formControlName="password">
+      <ng-container *ngIf="getPassword.touched">
+        <div
+        class="form-text"
+        *ngIf="getPassword.hasError('required')">
+          Password is required
+        </div>
+        <div
+        class="form-text"
+        *ngIf="getPassword.hasError('minlength')">
+          Password Length Must be 8 at Least
+        </div>
+      </ng-container>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
